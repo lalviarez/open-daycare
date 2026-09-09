@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp", "--executable-path", "/var/lib/flatpak/app/com.google.Chrome/current/active/export/bin/com.google.Chrome"],
+      "enabled": true
+    }
+  }
+}
