@@ -133,7 +133,6 @@ function PhotoPlaceholder({ caption }: { caption: string }) {
 
 export function PostCard({ post }: { post: Post }) {
   const title = post.child ?? "Anuncio general";
-  const config = badgeConfig[post.type];
 
   return (
     <article className="rounded-[20px] border border-border bg-paper p-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)]">
