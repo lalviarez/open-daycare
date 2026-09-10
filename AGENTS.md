@@ -35,3 +35,6 @@ App for a daycare ("guardería"): staff post each child's daily moments and fami
 - `spec` / `spec-impl` skills are installed for spec-driven feature work; prefer starting new features with the `spec` skill.
 - `spec` Usa esta habilidad para crear las especificaciones
 - `spec-impl` Usa esta habilidad para hacer las implementaciones
+
+## Code Rules
+- Usar código limpio, nombres, funciones, variables, etc, en inglés.
