@@ -1,6 +1,6 @@
 # SPEC 01 — Feed como home (`/`) con el diseño de OpenDayCare
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** ninguna
 > **Fecha:** 2026-09-09
 > **Objetivo:** Implementar la pantalla del feed (`references/pantallas/feed.dc.html`) como la home `/`, visualmente idéntica al comp, con datos mock tipados y una nav mobile nueva.
@@ -67,14 +67,14 @@ Convenciones: el título de la tarjeta se deriva (`child ?? "Anuncio general"`);
 
 ## Criterios de aceptación
 
-- [ ] `npm run build` pasa sin errores; `npm run lint` sin errores.
-- [ ] En 1280×800, `/` reproduce el comp: sidebar de 248px, "Buenas, Caro", "12 niños · martes 17 jun", composer, "PUBLICADO HOY" y las 3 tarjetas con badges LOGRO / ACTIVIDAD / ANUNCIO, contadores 3·1, 5·2, 8·0 y placeholder de foto.
-- [ ] Fredoka en títulos/branding y Nunito en cuerpo, cargadas con `next/font/google` (sin `<link>` a fonts.googleapis.com).
-- [ ] Fondo general `#F6ECDF`; sin dark mode ni restos del scaffold (Geist, `next.svg`, paleta zinc).
-- [ ] En <768px la sidebar desaparece, aparece la topbar y el drawer abre con la hamburguesa y cierra tocando el overlay.
-- [ ] Ningún link navega a rutas inexistentes (todos decorativos).
-- [ ] La copy es exactamente la del comp, en español voseo.
-- [ ] Capturas desktop y mobile guardadas en `.playwright-mcp/`.
+- [x] `npm run build` pasa sin errores; `npm run lint` sin errores.
+- [x] En 1280×800, `/` reproduce el comp: sidebar de 248px, "Buenas, Caro", "12 niños · martes 17 jun", composer, "PUBLICADO HOY" y las 3 tarjetas con badges LOGRO / ACTIVIDAD / ANUNCIO, contadores 3·1, 5·2, 8·0 y placeholder de foto.
+- [x] Fredoka en títulos/branding y Nunito en cuerpo, cargadas con `next/font/google` (sin `<link>` a fonts.googleapis.com).
+- [x] Fondo general `#F6ECDF`; sin dark mode ni restos del scaffold (Geist, `next.svg`, paleta zinc).
+- [x] En <768px la sidebar desaparece, aparece la topbar y el drawer abre con la hamburguesa y cierra tocando el overlay.
+- [x] Ningún link navega a rutas inexistentes (todos decorativos).
+- [x] La copy es exactamente la del comp, en español voseo.
+- [x] Capturas desktop y mobile guardadas en `.playwright-mcp/`.
 
 ## Decisiones
 
