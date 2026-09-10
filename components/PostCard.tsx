@@ -1,3 +1,5 @@
+"use client";
+
 import type { Post, PostType } from "@/lib/mock-data";
 
 const badgeConfig: Record<

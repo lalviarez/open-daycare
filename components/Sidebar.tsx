@@ -1,6 +1,8 @@
+"use client";
+
 import { currentUser, room } from "@/lib/mock-data";
 
-function LogoIcon({ className }: { className?: string }) {
+export function LogoIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -19,7 +21,7 @@ function LogoIcon({ className }: { className?: string }) {
   );
 }
 
-function PlusIcon({ className }: { className?: string }) {
+export function PlusIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -37,7 +39,7 @@ function PlusIcon({ className }: { className?: string }) {
   );
 }
 
-function HomeIcon({ className }: { className?: string }) {
+export function HomeIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -55,7 +57,7 @@ function HomeIcon({ className }: { className?: string }) {
   );
 }
 
-function ChildrenIcon({ className }: { className?: string }) {
+export function ChildrenIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -75,7 +77,7 @@ function ChildrenIcon({ className }: { className?: string }) {
   );
 }
 
-function BellIcon({ className }: { className?: string }) {
+export function BellIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -93,7 +95,7 @@ function BellIcon({ className }: { className?: string }) {
   );
 }
 
-function AccountIcon({ className }: { className?: string }) {
+export function AccountIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -112,7 +114,7 @@ function AccountIcon({ className }: { className?: string }) {
   );
 }
 
-function LogoutIcon({ className }: { className?: string }) {
+export function LogoutIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
