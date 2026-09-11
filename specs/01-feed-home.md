@@ -103,3 +103,38 @@ Convenciones: el título de la tarjeta se deriva (`child ?? "Anuncio general"`);
 - Autenticación, base de datos, crear publicación, niños, avisos, mi cuenta, detalle de publicación, fotos reales, interacción de likes/comentarios.
 
 Cada una de esas, si llega, va en su propio spec.
+
+## Verificación
+
+> **Fecha de verificación:** 2026-09-10
+> **Agente:** spec-verify
+> **Resultado:** Todos los criterios de aceptación PASAN.
+
+### Comandos ejecutados
+
+- `npm run build` — exit code 0, sin errores.
+- `npm run lint` — exit code 0, sin errores.
+- `npm run dev` — servidor levantado en `http://localhost:3000`.
+
+### Criterios verificados
+
+| # | Criterio | Veredicto |
+| --- | --- | --- |
+| 1 | `npm run build` y `npm run lint` sin errores | PASS |
+| 2 | Reproducción visual del comp en 1280×800 | PASS |
+| 3 | Fredoka en títulos, Nunito en cuerpo vía `next/font/google` | PASS |
+| 4 | Fondo `#F6ECDF`, sin dark mode ni restos del scaffold | PASS |
+| 5 | Mobile <768px: sidebar oculta, topbar visible, drawer abre/cierra | PASS |
+| 6 | Links decorativos (sin navegación a rutas inexistentes) | PASS |
+| 7 | Copy exacta del comp en español voseo | PASS |
+| 8 | Capturas guardadas en `.playwright-mcp/` | PASS |
+
+### Evidencia
+
+- `.playwright-mcp/spec01-desktop.png` — Desktop 1280×800.
+- `.playwright-mcp/spec01-mobile.png` — Mobile 375×667.
+- `.playwright-mcp/spec01-mobile-drawer.png` — Mobile con drawer abierto.
+
+### Notas
+
+No se requirieron arreglos en el código. La implementación coincide con el spec y con el comp de referencia.
