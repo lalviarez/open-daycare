@@ -21,7 +21,6 @@ export const currentUser = {
 
 export const room = {
   name: "Soles",
-  childrenCount: 12,
   dateLabel: "martes 17 jun",
 };
 
@@ -56,5 +55,181 @@ export const posts: Post[] = [
     body: "El viernes salimos al parque por la mañana. Recuerden mandar gorra y una botellita de agua.",
     likes: 8,
     comments: 0,
+  },
+];
+
+export type AvatarColor = "sky" | "blue" | "pink" | "mint" | "yellow" | "purple";
+export type ParentStatus = "active" | "pending";
+
+export type Parent = {
+  name: string;
+  role: string;
+  status: ParentStatus;
+  avatarColor: AvatarColor;
+};
+
+export type Child = {
+  id: string;
+  name: string;
+  ageLabel: string;
+  birthDateLabel: string;
+  enrollmentLabel: string;
+  allergyTags: string[];
+  allergyNotes: string;
+  avatarColor: AvatarColor;
+  parents: Parent[];
+};
+
+export const children: Child[] = [
+  {
+    id: "mateo-fernandez",
+    name: "Mateo Fernández",
+    ageLabel: "3 años",
+    birthDateLabel: "12 mar 2022",
+    enrollmentLabel: "feb 2025",
+    allergyTags: ["MANÍ"],
+    allergyNotes:
+      "Alergia al maní. Evitar frutos secos. Lleva inhalador en la mochila.",
+    avatarColor: "sky",
+    parents: [
+      {
+        name: "Lucía Fernández",
+        role: "Mamá",
+        status: "active",
+        avatarColor: "purple",
+      },
+      {
+        name: "Diego Fernández",
+        role: "Papá",
+        status: "pending",
+        avatarColor: "blue",
+      },
+    ],
+  },
+  {
+    id: "sofia-mendez",
+    name: "Sofía Méndez",
+    ageLabel: "2 años",
+    birthDateLabel: "15 may 2023",
+    enrollmentLabel: "mar 2025",
+    allergyTags: [],
+    allergyNotes: "",
+    avatarColor: "pink",
+    parents: [
+      {
+        name: "Ana Méndez",
+        role: "Mamá",
+        status: "active",
+        avatarColor: "yellow",
+      },
+    ],
+  },
+  {
+    id: "benjamin-ruiz",
+    name: "Benjamín Ruiz",
+    ageLabel: "3 años",
+    birthDateLabel: "8 ene 2022",
+    enrollmentLabel: "feb 2025",
+    allergyTags: [],
+    allergyNotes: "",
+    avatarColor: "mint",
+    parents: [
+      {
+        name: "Laura Ruiz",
+        role: "Mamá",
+        status: "active",
+        avatarColor: "pink",
+      },
+      {
+        name: "Martín Ruiz",
+        role: "Papá",
+        status: "pending",
+        avatarColor: "sky",
+      },
+    ],
+  },
+  {
+    id: "valentina-soto",
+    name: "Valentina Soto",
+    ageLabel: "2 años",
+    birthDateLabel: "22 ago 2023",
+    enrollmentLabel: "abr 2025",
+    allergyTags: [],
+    allergyNotes: "",
+    avatarColor: "yellow",
+    parents: [],
+  },
+  {
+    id: "tomas-diaz",
+    name: "Tomás Díaz",
+    ageLabel: "3 años",
+    birthDateLabel: "3 nov 2022",
+    enrollmentLabel: "feb 2025",
+    allergyTags: ["LACTOSA"],
+    allergyNotes:
+      "Alergia a la lactosa. Evitar leche de vaca y derivados; usa fórmula sin lactosa.",
+    avatarColor: "purple",
+    parents: [
+      {
+        name: "Paula Díaz",
+        role: "Mamá",
+        status: "active",
+        avatarColor: "mint",
+      },
+    ],
+  },
+  {
+    id: "emma-castro",
+    name: "Emma Castro",
+    ageLabel: "2 años",
+    birthDateLabel: "11 jul 2023",
+    enrollmentLabel: "mar 2025",
+    allergyTags: [],
+    allergyNotes: "",
+    avatarColor: "pink",
+    parents: [
+      {
+        name: "Camila Castro",
+        role: "Mamá",
+        status: "active",
+        avatarColor: "purple",
+      },
+    ],
+  },
+  {
+    id: "lucas-romero",
+    name: "Lucas Romero",
+    ageLabel: "3 años",
+    birthDateLabel: "29 abr 2022",
+    enrollmentLabel: "feb 2025",
+    allergyTags: [],
+    allergyNotes: "",
+    avatarColor: "sky",
+    parents: [
+      {
+        name: "Florencia Romero",
+        role: "Mamá",
+        status: "active",
+        avatarColor: "blue",
+      },
+    ],
+  },
+  {
+    id: "olivia-vega",
+    name: "Olivia Vega",
+    ageLabel: "2 años",
+    birthDateLabel: "6 dic 2023",
+    enrollmentLabel: "mar 2025",
+    allergyTags: [],
+    allergyNotes: "",
+    avatarColor: "mint",
+    parents: [
+      {
+        name: "Mariana Vega",
+        role: "Mamá",
+        status: "pending",
+        avatarColor: "yellow",
+      },
+    ],
   },
 ];

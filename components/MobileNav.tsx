@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { NavLink } from "@/components/NavLink";
 import { currentUser, room } from "@/lib/mock-data";
 import {
   LogoIcon,
@@ -161,14 +162,14 @@ export function MobileNav() {
             </a>
 
             <nav className="flex flex-1 flex-col gap-1">
-              <DrawerLink isActive>
+              <NavLink href="/" onClick={close}>
                 <HomeIcon />
                 Feed
-              </DrawerLink>
-              <DrawerLink>
+              </NavLink>
+              <NavLink href="/kids" onClick={close}>
                 <ChildrenIcon />
                 Niños
-              </DrawerLink>
+              </NavLink>
               <DrawerLink>
                 <BellIcon />
                 Avisos

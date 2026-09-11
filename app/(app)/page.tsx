@@ -1,7 +1,5 @@
-import { Sidebar } from "@/components/Sidebar";
-import { MobileNav } from "@/components/MobileNav";
 import { PostCard } from "@/components/PostCard";
-import { currentUser, posts, room } from "@/lib/mock-data";
+import { children, currentUser, posts, room } from "@/lib/mock-data";
 
 function CameraIcon() {
   return (
@@ -51,34 +49,26 @@ function TodayDivider() {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-cream">
-      <Sidebar />
-      <div className="flex min-w-0 flex-1 flex-col">
-        <MobileNav />
-        <main className="flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-[760px] px-6 py-8 md:px-10 md:py-[34px]">
-            <header className="mb-6">
-              <div className="mb-1 text-[12.5px] font-extrabold uppercase tracking-[0.8px] text-accent">
-                GUARDERÍA · SALA {room.name.toUpperCase()}
-              </div>
-              <h1 className="font-heading text-[30px] font-semibold text-earth">
-                Buenas, {currentUser.name.split(" ")[0]}
-              </h1>
-              <p className="mt-1 text-[14.5px] text-dim">
-                {room.childrenCount} niños · {room.dateLabel}
-              </p>
-            </header>
+    <div className="mx-auto max-w-[760px] px-6 py-8 md:px-10 md:py-[34px]">
+      <header className="mb-6">
+        <div className="mb-1 text-[12.5px] font-extrabold uppercase tracking-[0.8px] text-accent">
+          GUARDERÍA · SALA {room.name.toUpperCase()}
+        </div>
+        <h1 className="font-heading text-[30px] font-semibold text-earth">
+          Buenas, {currentUser.name.split(" ")[0]}
+        </h1>
+        <p className="mt-1 text-[14.5px] text-dim">
+          {children.length} niños · {room.dateLabel}
+        </p>
+      </header>
 
-            <ComposerTrigger />
-            <TodayDivider />
+      <ComposerTrigger />
+      <TodayDivider />
 
-            <div className="flex flex-col gap-4">
-              {posts.map((post) => (
-                <PostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </div>
-        </main>
+      <div className="flex flex-col gap-4">
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
       </div>
     </div>
   );
