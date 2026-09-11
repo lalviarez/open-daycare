@@ -76,19 +76,19 @@ export const children: Child[]; // los 8 del comp
 
 ## Criterios de aceptación
 
-- [ ] `npm run build` y `npm run lint` pasan sin errores.
-- [ ] `/kids` reproduce el comp: eyebrow GESTIÓN, título Niños, "Agregar niño" decorativo, buscador, "SALA SOLES · 8 niños" con divisor, grilla de 2 columnas (≥768px) con las 8 tarjetas.
-- [ ] Cada tarjeta muestra avatar con inicial y color del comp, nombre, "X años · Y padres vinculados" con pluralización correcta, y a la derecha chip MANÍ (Mateo) / LACTOSA (Tomás) / VINCULAR (Valentina) / chevron (el resto).
-- [ ] Hover de tarjeta: borde `#F2A78E` y lift de -2px, como el comp.
-- [ ] El buscador filtra por nombre en vivo, sin distinguir mayúsculas ni acentos ("sofia" encuentra a "Sofía Méndez"); sin resultados muestra el estado vacío; al vaciar vuelven las 8 tarjetas.
-- [ ] `/kids/mateo-fernandez` reproduce el comp del perfil: "Volver a Niños", avatar 84px, "3 años · Sala Soles", "Editar" decorativo, tarjeta de alergias con el texto exacto, filas 12 mar 2022 / Soles / feb 2025, "Resumen del día" decorativo, Lucía (ACTIVA) y Diego (PENDIENTE), "Vincular otro padre" decorativo.
-- [ ] `/kids/[slug]` con slug inexistente devuelve 404 (`notFound()`).
-- [ ] Sidebar y mobile nav linkean Feed → `/` y Niños → `/kids` con estado activo según la ruta; Avisos y Mi cuenta siguen decorativos; ningún link navega a una ruta inexistente.
-- [ ] El feed muestra "8 niños · martes 17 jun" con conteo derivado de `children` (supersede el "12 niños" verificado en SPEC 01).
-- [ ] El shell vive una sola vez en `app/(app)/layout.tsx` y `/` no sufre regresión visual frente a las capturas de SPEC 01 (salvo el conteo).
-- [ ] En <768px la grilla pasa a 1 columna, el perfil apila sus bloques y el shell mobile se comporta como en SPEC 01.
-- [ ] La copy visible es exactamente la de los comps, en español voseo.
-- [ ] Capturas guardadas en `.playwright-mcp/`.
+- [x] `npm run build` y `npm run lint` pasan sin errores.
+- [x] `/kids` reproduce el comp: eyebrow GESTIÓN, título Niños, "Agregar niño" decorativo, buscador, "SALA SOLES · 8 niños" con divisor, grilla de 2 columnas (≥768px) con las 8 tarjetas.
+- [x] Cada tarjeta muestra avatar con inicial y color del comp, nombre, "X años · Y padres vinculados" con pluralización correcta, y a la derecha chip MANÍ (Mateo) / LACTOSA (Tomás) / VINCULAR (Valentina) / chevron (el resto).
+- [x] Hover de tarjeta: borde `#F2A78E` y lift de -2px, como el comp.
+- [x] El buscador filtra por nombre en vivo, sin distinguir mayúsculas ni acentos ("sofia" encuentra a "Sofía Méndez"); sin resultados muestra el estado vacío; al vaciar vuelven las 8 tarjetas.
+- [x] `/kids/mateo-fernandez` reproduce el comp del perfil: "Volver a Niños", avatar 84px, "3 años · Sala Soles", "Editar" decorativo, tarjeta de alergias con el texto exacto, filas 12 mar 2022 / Soles / feb 2025, "Resumen del día" decorativo, Lucía (ACTIVA) y Diego (PENDIENTE), "Vincular otro padre" decorativo.
+- [x] `/kids/[slug]` con slug inexistente devuelve 404 (`notFound()`).
+- [x] Sidebar y mobile nav linkean Feed → `/` y Niños → `/kids` con estado activo según la ruta; Avisos y Mi cuenta siguen decorativos; ningún link navega a una ruta inexistente.
+- [x] El feed muestra "8 niños · martes 17 jun" con conteo derivado de `children` (supersede el "12 niños" verificado en SPEC 01).
+- [x] El shell vive una sola vez en `app/(app)/layout.tsx` y `/` no sufre regresión visual frente a las capturas de SPEC 01 (salvo el conteo).
+- [x] En <768px la grilla pasa a 1 columna, el perfil apila sus bloques y el shell mobile se comporta como en SPEC 01.
+- [x] La copy visible es exactamente la de los comps, en español voseo.
+- [x] Capturas guardadas en `.playwright-mcp/`.
 
 ## Decisiones
 
@@ -120,3 +120,49 @@ export const children: Child[]; // los 8 del comp
 - Agregar/editar niño, resumen del día, vincular padre, autenticación, base de datos, interacción sobre padres.
 
 Cada una, si llega, va en su propio spec.
+
+## Verificación
+
+> **Fecha de verificación:** 2026-09-10
+> **Agente:** spec-verify
+> **Resultado:** Todos los criterios de aceptación PASAN.
+
+### Comandos ejecutados
+
+- `npm run build` — exit code 0, "Compiled successfully in 893ms", 5 rutas generadas.
+- `npm run lint` — exit code 0, sin errores.
+- `npm run dev` — servidor respondiendo en `http://localhost:3000`.
+
+### Criterios verificados
+
+| # | Criterio | Veredicto |
+| --- | --- | --- |
+| 1 | `npm run build` y `npm run lint` sin errores | PASS |
+| 2 | `/kids` reproduce el comp (eyebrow, título, buscador, divisor, grilla 2 col, 8 tarjetas) | PASS |
+| 3 | Tarjetas: avatar+inicial+color, pluralización, chips MANÍ/LACTOSA/VINCULAR/chevron | PASS |
+| 4 | Hover: borde `#F2A78E`, lift -2px | PASS |
+| 5 | Buscador en vivo, sin acentos/mayúsculas, estado vacío, clear → 8 tarjetas | PASS |
+| 6 | `/kids/mateo-fernandez` reproduce el comp del perfil completo | PASS |
+| 7 | Slug inexistente → 404 (`notFound()`) | PASS |
+| 8 | Nav con estado activo por ruta (`/`→Feed, `/kids`→Niños, decorativos) | PASS |
+| 9 | Feed muestra "8 niños · martes 17 jun" (conteo de `children.length`) | PASS |
+| 10 | Shell en route group, sin regresión visual en `/` | PASS |
+| 11 | Mobile <768px: grilla 1 col, perfil apilado, shell mobile | PASS |
+| 12 | Copy exacta de los comps, español voseo | PASS |
+| 13 | Capturas guardadas en `.playwright-mcp/` | PASS |
+
+### Evidencia
+
+- `.playwright-mcp/verify-02-kids-desktop.png` — Listado desktop 1280×800.
+- `.playwright-mcp/verify-02-kids-mobile.png` — Listado mobile 375×667.
+- `.playwright-mcp/verify-02-kids-empty-state.png` — Estado vacío del buscador.
+- `.playwright-mcp/verify-02-kids-search-sofia.png` — Búsqueda "sofia" encuentra "Sofía Méndez".
+- `.playwright-mcp/verify-02-profile-desktop.png` — Perfil desktop 1280×800.
+- `.playwright-mcp/verify-02-profile-mobile.png` — Perfil mobile 375×667.
+- `.playwright-mcp/verify-02-feed-desktop.png` — Feed desktop (confirma "8 niños" sin regresión).
+- `.playwright-mcp/verify-02-feed-mobile.png` — Feed mobile sin regresión.
+- `.playwright-mcp/verify-02-mobile-drawer.png` — Drawer mobile con nav activa.
+
+### Notas
+
+No se requirieron arreglos en el código. La implementación coincide con el spec y con los comps de referencia. Los 8 niños del mock están correctamente renderizados, la búsqueda ignora acentos y mayúsculas, el perfil reproduce el comp en detalle, y el nav activo funciona tanto en rutas exactas como hijas (`/kids` y `/kids/[slug]`).
