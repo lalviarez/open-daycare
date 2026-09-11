@@ -32,6 +32,10 @@ App for a daycare ("guardería"): staff post each child's daily moments and fami
 - Context7: use it for current framework docs (Next 16 differs from training data).
 
 ## Workflow
-- `spec` / `spec-impl` skills are installed for spec-driven feature work; prefer starting new features with the `spec` skill.
+- `spec` / `spec-impl` / `spec-verify` skills are installed for spec-driven feature work; prefer starting new features with the `spec` skill.
 - `spec` Usa esta habilidad para crear las especificaciones
 - `spec-impl` Usa esta habilidad para hacer las implementaciones
+- `spec-verify` Usa esta habilidad para verificar los criterios de aceptación de una especificación ya implementada
+
+## Code Rules
+- Usar código limpio, nombres, funciones, variables, etc, en inglés.
