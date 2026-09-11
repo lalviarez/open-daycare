@@ -33,6 +33,22 @@
   --color-logo-end: #f2937a;
   --color-scrollbar-thumb: #e4d6c4;
 
+  --color-allergy-chip-bg: #fbd8cc;
+  --color-allergy-chip-text: #d9684a;
+  --color-vincular-chip-bg: #f9d2de;
+  --color-vincular-chip-text: #c56486;
+  --color-status-active-bg: #cfebd8;
+  --color-status-active-text: #3e9b6c;
+  --color-status-pending-bg: #f7e7a6;
+  --color-status-pending-text: #9a7b1e;
+  --color-allergy-card-bg: #fbdad6;
+  --color-allergy-icon-bg: #f4a8a0;
+  --color-allergy-title-text: #c5413a;
+  --color-allergy-body-text: #b25249;
+  --color-kid-hover-border: #f2a78e;
+  --color-chevron: #cbb89f;
+  --color-search-icon: #b0a290;
+
   --font-sans: var(--font-nunito);
   --font-heading: var(--font-fredoka);
 }

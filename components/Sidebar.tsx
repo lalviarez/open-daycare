@@ -1,5 +1,6 @@
 "use client";
 
+import { NavLink } from "@/components/NavLink";
 import { currentUser, room } from "@/lib/mock-data";
 
 export function LogoIcon({ className }: { className?: string }) {
@@ -190,14 +191,14 @@ export function Sidebar() {
       </a>
 
       <nav className="flex flex-1 flex-col gap-1">
-        <DecorativeLink isActive>
+        <NavLink href="/">
           <HomeIcon />
           Feed
-        </DecorativeLink>
-        <DecorativeLink>
+        </NavLink>
+        <NavLink href="/kids">
           <ChildrenIcon />
           Niños
-        </DecorativeLink>
+        </NavLink>
         <DecorativeLink>
           <BellIcon />
           Avisos
