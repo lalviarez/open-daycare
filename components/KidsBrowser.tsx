@@ -33,9 +33,10 @@ function normalize(text: string) {
 
 type KidsBrowserProps = {
   kids: Child[];
+  mockIds: Set<string>;
 };
 
-export function KidsBrowser({ kids }: KidsBrowserProps) {
+export function KidsBrowser({ kids, mockIds }: KidsBrowserProps) {
   const [query, setQuery] = useState("");
   const normalizedQuery = normalize(query.trim());
 
@@ -72,7 +73,7 @@ export function KidsBrowser({ kids }: KidsBrowserProps) {
       ) : (
         <div className="grid grid-cols-1 gap-[14px] md:grid-cols-2">
           {filtered.map((kid) => (
-            <KidCard key={kid.id} child={kid} />
+            <KidCard key={kid.id} child={kid} isMock={mockIds.has(kid.id)} />
           ))}
         </div>
       )}
