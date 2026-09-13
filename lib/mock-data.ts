@@ -24,6 +24,14 @@ export const room = {
   dateLabel: "martes 17 jun",
 };
 
+export type Room = { name: string };
+
+export const rooms: Room[] = [
+  { name: "Soles" },
+  { name: "Lunas" },
+  { name: "Estrellas" },
+];
+
 export const posts: Post[] = [
   {
     id: "1",
@@ -74,6 +82,7 @@ export type Child = {
   ageLabel: string;
   birthDateLabel: string;
   enrollmentLabel: string;
+  roomName: string;
   allergyTags: string[];
   allergyNotes: string;
   avatarColor: AvatarColor;
@@ -87,6 +96,7 @@ export const children: Child[] = [
     ageLabel: "3 años",
     birthDateLabel: "12 mar 2022",
     enrollmentLabel: "feb 2025",
+    roomName: "Soles",
     allergyTags: ["MANÍ"],
     allergyNotes:
       "Alergia al maní. Evitar frutos secos. Lleva inhalador en la mochila.",
@@ -112,6 +122,7 @@ export const children: Child[] = [
     ageLabel: "2 años",
     birthDateLabel: "15 may 2023",
     enrollmentLabel: "mar 2025",
+    roomName: "Soles",
     allergyTags: [],
     allergyNotes: "",
     avatarColor: "pink",
@@ -130,6 +141,7 @@ export const children: Child[] = [
     ageLabel: "3 años",
     birthDateLabel: "8 ene 2022",
     enrollmentLabel: "feb 2025",
+    roomName: "Soles",
     allergyTags: [],
     allergyNotes: "",
     avatarColor: "mint",
@@ -154,6 +166,7 @@ export const children: Child[] = [
     ageLabel: "2 años",
     birthDateLabel: "22 ago 2023",
     enrollmentLabel: "abr 2025",
+    roomName: "Soles",
     allergyTags: [],
     allergyNotes: "",
     avatarColor: "yellow",
@@ -165,6 +178,7 @@ export const children: Child[] = [
     ageLabel: "3 años",
     birthDateLabel: "3 nov 2022",
     enrollmentLabel: "feb 2025",
+    roomName: "Soles",
     allergyTags: ["LACTOSA"],
     allergyNotes:
       "Alergia a la lactosa. Evitar leche de vaca y derivados; usa fórmula sin lactosa.",
@@ -184,6 +198,7 @@ export const children: Child[] = [
     ageLabel: "2 años",
     birthDateLabel: "11 jul 2023",
     enrollmentLabel: "mar 2025",
+    roomName: "Soles",
     allergyTags: [],
     allergyNotes: "",
     avatarColor: "pink",
@@ -202,6 +217,7 @@ export const children: Child[] = [
     ageLabel: "3 años",
     birthDateLabel: "29 abr 2022",
     enrollmentLabel: "feb 2025",
+    roomName: "Soles",
     allergyTags: [],
     allergyNotes: "",
     avatarColor: "sky",
@@ -220,6 +236,7 @@ export const children: Child[] = [
     ageLabel: "2 años",
     birthDateLabel: "6 dic 2023",
     enrollmentLabel: "mar 2025",
+    roomName: "Soles",
     allergyTags: [],
     allergyNotes: "",
     avatarColor: "mint",
