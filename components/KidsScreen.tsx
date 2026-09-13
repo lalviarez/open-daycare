@@ -1,21 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { children } from "@/lib/mock-data";
+import { useState } from "react";
 import { getLocalKids, addKid } from "@/lib/kids-storage";
 import { KidsBrowser } from "@/components/KidsBrowser";
 import { AddKidModal } from "@/components/AddKidModal";
 import type { Child } from "@/lib/mock-data";
 
 export default function KidsScreen({ mockKids }: { mockKids: Child[] }) {
-  const [localKids, setLocalKids] = useState<Child[]>([]);
+  const [localKids, setLocalKids] = useState<Child[]>(() => getLocalKids());
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Cargar altas existentes de localStorage al montar
-  useEffect(() => {
-    const loaded = getLocalKids();
-    setLocalKids(loaded);
-  }, []);
 
   // Set de ids de los niños del mock (para saber cuáles son "originales")
   const mockIds = new Set(mockKids.map((kid) => kid.id));
@@ -23,7 +16,7 @@ export default function KidsScreen({ mockKids }: { mockKids: Child[] }) {
   // Niños combinados: los altos locales primero, luego los del mock
   const mergedKids = [...localKids, ...mockKids];
 
-  // Derivar el id único y agregar un niño al estado local
+  // Agregar un niño al estado local
   const handleAddKid = (input: {
     name: string;
     birthDate: string;
@@ -35,35 +28,6 @@ export default function KidsScreen({ mockKids }: { mockKids: Child[] }) {
     setLocalKids((prev) => [child, ...prev]);
     setIsModalOpen(false);
   };
-
-  // Máscara de fecha: dd/mm/aaaa
-  const maskDate = (value: string): string => {
-    const digits = value.replace(/\D/g, "").slice(0, 8);
-    if (digits.length <= 2) return digits;
-    if (digits.length <= 4) {
-      return `${digits.slice(0, 2)}/${digits.slice(2)}`;
-    }
-    return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
-  };
-
-  // Validación simple de formato de fecha
-  const isValidDate = (value: string): boolean => {
-    if (!/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return false;
-    const [day, month, year] = value.split("/").map(Number);
-    const date = new Date(year, month - 1, day);
-    return (
-      date.getFullYear() === year &&
-      date.getMonth() === month - 1 &&
-      date.getDate() === day
-    );
-  };
-
-  // Parsear etiquetas de alergia separadas por coma
-  const parseAllergyTags = (value: string): string[] =>
-    value.split(",").map((tag) => tag.trim().toUpperCase()).filter((tag) => tag.length > 0);
-
-  const inputBase =
-    "w-full rounded-[14px] border-[1.5px] bg-white px-4 py-3.5 text-[15px] text-earth placeholder:text-dim/60 focus:border-login-mid focus:outline-none";
 
   return (
     <>
