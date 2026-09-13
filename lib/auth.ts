@@ -1,6 +1,7 @@
 "use client";
 
 import { children, invitations, users, type UserRole } from "@/lib/mock-data";
+import { getLocalInvitations } from "@/lib/invitations-storage";
 
 const SESSION_KEY = "odc-session:v1";
 const ACCOUNTS_KEY = "odc-accounts:v1";
@@ -130,9 +131,19 @@ export function activateAccount(
 ):
   | { ok: true; session: Session }
   | { ok: false; error: "code" | "email" | "password" } {
-  const invitation = invitations.find(
-    (item) => item.code.toUpperCase() === code.trim().toUpperCase()
+  const normalizedCode = code.trim().toUpperCase();
+
+  const mockInvitation = invitations.find(
+    (item) => item.code.toUpperCase() === normalizedCode
   );
+
+  const localInvitation = mockInvitation
+    ? null
+    : getLocalInvitations().find(
+        (item) => item.code.toUpperCase() === normalizedCode
+      );
+
+  const invitation = mockInvitation ?? localInvitation;
   if (!invitation) {
     return { ok: false, error: "code" };
   }
