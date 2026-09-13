@@ -54,14 +54,6 @@ export function LinkParentModal({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    setParentName("");
-    setEmail("");
-    setParentRole("");
-    setErrors({});
-  }, [isOpen]);
-
   if (!isOpen) return null;
 
   const validate = (): boolean => {
