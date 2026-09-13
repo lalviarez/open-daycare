@@ -1,6 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { NavLink } from "@/components/NavLink";
+import { signOut } from "@/lib/auth";
 import { currentUser, room } from "@/lib/mock-data";
 
 export function LogoIcon({ className }: { className?: string }) {
@@ -157,6 +159,13 @@ function DecorativeLink({
 }
 
 export function Sidebar() {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    signOut();
+    router.push("/login");
+  };
+
   return (
     <aside className="hidden md:flex sticky top-0 h-screen w-[248px] shrink-0 flex-col border-r border-border bg-paper px-4 py-6">
       <a
@@ -222,14 +231,14 @@ export function Sidebar() {
               {currentUser.role} · {currentUser.room}
             </div>
           </div>
-          <a
-            href="#"
-            onClick={(event) => event.preventDefault()}
+          <button
+            type="button"
+            onClick={handleLogout}
             title="Cerrar sesión"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-cream text-dim"
+            className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border-0 bg-cream p-0 text-dim"
           >
             <LogoutIcon />
-          </a>
+          </button>
         </div>
       </div>
     </aside>

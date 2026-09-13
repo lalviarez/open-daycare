@@ -233,3 +233,48 @@ export const children: Child[] = [
     ],
   },
 ];
+
+export type UserRole = "staff" | "family";
+
+export type User = {
+  email: string;
+  password: string;
+  role: UserRole;
+  name: string;
+  roleLabel: string;
+};
+
+export const users: User[] = [
+  {
+    email: "caro@opendaycare.com",
+    password: "guarderia2026",
+    role: "staff",
+    name: "Caro Giménez",
+    roleLabel: "Maestra",
+  },
+  {
+    email: "lucia.fernandez@gmail.com",
+    password: "familia2026",
+    role: "family",
+    name: "Lucía Fernández",
+    roleLabel: "Mamá de Mateo",
+  },
+];
+
+export type Invitation = {
+  code: string;
+  parentName: string;
+  parentRole: string;
+  email: string;
+  childId: string;
+};
+
+export const invitations: Invitation[] = [
+  {
+    code: "7K4P9",
+    parentName: "Diego Fernández",
+    parentRole: "Papá",
+    email: "diego.fernandez@gmail.com",
+    childId: "mateo-fernandez",
+  },
+];

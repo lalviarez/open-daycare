@@ -49,6 +49,15 @@
   --color-chevron: #cbb89f;
   --color-search-icon: #b0a290;
 
+  --color-login-bg: #fbf4ec;
+  --color-login-start: #f6a98e;
+  --color-login-mid: #f2937a;
+  --color-login-end: #ec7e62;
+  --color-input-border: #eadfd0;
+  --color-consent-bg: #fbf1d6;
+  --color-consent-check: #5fb97e;
+  --color-consent-text: #8a7234;
+
   --font-sans: var(--font-nunito);
   --font-heading: var(--font-fredoka);
 }

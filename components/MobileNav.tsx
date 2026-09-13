@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { NavLink } from "@/components/NavLink";
+import { signOut } from "@/lib/auth";
 import { currentUser, room } from "@/lib/mock-data";
 import {
   LogoIcon,
@@ -76,6 +78,12 @@ export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    signOut();
+    router.push("/login");
+  };
 
   return (
     <>
@@ -193,14 +201,14 @@ export function MobileNav() {
                     {currentUser.role} · {currentUser.room}
                   </div>
                 </div>
-                <a
-                  href="#"
-                  onClick={(event) => event.preventDefault()}
+                <button
+                  type="button"
+                  onClick={handleLogout}
                   title="Cerrar sesión"
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-cream text-dim"
+                  className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border-0 bg-cream p-0 text-dim"
                 >
                   <LogoutIcon />
-                </a>
+                </button>
               </div>
             </div>
           </div>
