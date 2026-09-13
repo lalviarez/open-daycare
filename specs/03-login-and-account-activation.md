@@ -1,6 +1,6 @@
 # SPEC 03 — Login (`/login`) y activación de cuenta (`/activate`)
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01, SPEC 02
 > **Fecha:** 2026-09-12
 > **Objetivo:** Implementar las pantallas de login y activación de cuenta (`references/pantallas/login.dc.html` y `references/pantallas/activar-cuenta.dc.html`) como rutas públicas `/login` y `/activate`, con sesión mock en localStorage y sin el selector de rol del comp de login.
@@ -89,22 +89,22 @@ homePathFor(role: UserRole): string              // hoy "/" para ambos roles
 
 ## Criterios de aceptación
 
-- [ ] `npm run build` y `npm run lint` pasan sin errores.
-- [ ] `/login` reproduce el comp sin el bloque "INGRESO COMO": panel izquierdo (gradiente, logo OpenDayCare, titular "El día de cada niño, compartido con su familia.", "🌿 Guardería Sala Soles") y formulario con "Ingresá para ver el día de hoy.", EMAIL, CONTRASEÑA, "¿Olvidaste tu contraseña?", botón "Iniciar sesión" y "¿Te invitó la guardería? Activá tu cuenta" → `/activate`.
-- [ ] Los campos de `/login` cargan vacíos (solo placeholders).
-- [ ] Login con `caro@opendaycare.com` + `guarderia2026` redirige a `/` y guarda la sesión en `odc-session:v1`; al recargar, la sesión persiste.
-- [ ] Login con `lucia.fernandez@gmail.com` + `familia2026` redirige a `/` (destino familia temporal, anotado en decisiones).
-- [ ] Credenciales incorrectas o campos vacíos muestran error inline bajo el campo, sin redirect ni crash.
-- [ ] `/activate` reproduce el comp: "Bienvenida a OpenDayCare", tarjeta "Te invitaron a seguir a / Mateo · Sala Soles" con avatar M, CÓDIGO DE INVITACIÓN precargado con `7K4P9`, EMAIL y CREAR CONTRASEÑA vacíos, checkbox de autorización, "Activar mi cuenta" y "¿Ya tenés cuenta? Iniciar sesión" → `/login`.
-- [ ] Activar con `7K4P9` + `diego.fernandez@gmail.com` + contraseña ≥ 8 caracteres + checkbox marcado crea la sesión de Diego y redirige a `/`.
-- [ ] Código inválido, email que no coincide, contraseña < 8 y checkbox desmarcado muestran cada uno su error inline, sin redirect.
-- [ ] Tras activar y cerrar sesión, el login con `diego.fernandez@gmail.com` y la contraseña elegida funciona (cuenta persistida en `odc-accounts:v1`).
-- [ ] El logout de la sidebar y del drawer mobile limpia la sesión y navega a `/login`.
-- [ ] "¿Olvidaste tu contraseña?" no navega (decorativo).
-- [ ] El perfil de Mateo (`/kids/mateo-fernandez`) sigue mostrando a Diego como PENDIENTE después de activar (el mock no muta).
-- [ ] En <768px el panel izquierdo del login se oculta y queda el formulario centrado; `/activate` apila sin scroll horizontal.
-- [ ] Ningún link navega a una ruta inexistente.
-- [ ] Capturas guardadas en `.playwright-mcp/` (login y activación, desktop y mobile, un estado de error por pantalla).
+- [x] `npm run build` y `npm run lint` pasan sin errores.
+- [x] `/login` reproduce el comp sin el bloque "INGRESO COMO": panel izquierdo (gradiente, logo OpenDayCare, titular "El día de cada niño, compartido con su familia.", "🌿 Guardería Sala Soles") y formulario con "Ingresá para ver el día de hoy.", EMAIL, CONTRASEÑA, "¿Olvidaste tu contraseña?", botón "Iniciar sesión" y "¿Te invitó la guardería? Activá tu cuenta" → `/activate`.
+- [x] Los campos de `/login` cargan vacíos (solo placeholders).
+- [x] Login con `caro@opendaycare.com` + `guarderia2026` redirige a `/` y guarda la sesión en `odc-session:v1`; al recargar, la sesión persiste.
+- [x] Login con `lucia.fernandez@gmail.com` + `familia2026` redirige a `/` (destino familia temporal, anotado en decisiones).
+- [x] Credenciales incorrectas o campos vacíos muestran error inline bajo el campo, sin redirect ni crash.
+- [x] `/activate` reproduce el comp: "Bienvenida a OpenDayCare", tarjeta "Te invitaron a seguir a / Mateo · Sala Soles" con avatar M, CÓDIGO DE INVITACIÓN precargado con `7K4P9`, EMAIL y CREAR CONTRASEÑA vacíos, checkbox de autorización, "Activar mi cuenta" y "¿Ya tenés cuenta? Iniciar sesión" → `/login`.
+- [x] Activar con `7K4P9` + `diego.fernandez@gmail.com` + contraseña ≥ 8 caracteres + checkbox marcado crea la sesión de Diego y redirige a `/`.
+- [x] Código inválido, email que no coincide, contraseña < 8 y checkbox desmarcado muestran cada uno su error inline, sin redirect.
+- [x] Tras activar y cerrar sesión, el login con `diego.fernandez@gmail.com` y la contraseña elegida funciona (cuenta persistida en `odc-accounts:v1`).
+- [x] El logout de la sidebar y del drawer mobile limpia la sesión y navega a `/login`.
+- [x] "¿Olvidaste tu contraseña?" no navega (decorativo).
+- [x] El perfil de Mateo (`/kids/mateo-fernandez`) sigue mostrando a Diego como PENDIENTE después de activar (el mock no muta).
+- [x] En <768px el panel izquierdo del login se oculta y queda el formulario centrado; `/activate` apila sin scroll horizontal.
+- [x] Ningún link navega a una ruta inexistente.
+- [x] Capturas guardadas en `.playwright-mcp/` (login y activación, desktop y mobile, un estado de error por pantalla).
 
 ## Decisiones
 
@@ -141,3 +141,49 @@ homePathFor(role: UserRole): string              // hoy "/" para ambos roles
 - familia-feed, destino y shell real de familia, "olvidé mi contraseña", emails de invitación, protección de rutas, DB/auth reales, mutación del estado de padres, sidebar por rol.
 
 Cada una de esas, si llega, va en su propio spec.
+
+## Verificación
+
+> **Fecha de verificación:** 2026-09-12
+> **Agente:** spec-verify
+> **Resultado:** Todos los criterios de aceptación PASAN.
+
+### Comandos ejecutados
+
+- `npm run build` — exit code 0, sin errores.
+- `npm run lint` — exit code 0, sin errores.
+- `npm run dev` — servidor levantado en `http://localhost:3000`.
+
+### Criterios verificados
+
+| # | Criterio | Veredicto |
+| --- | --- | --- |
+| 1 | `npm run build` y `npm run lint` sin errores | PASS |
+| 2 | `/login` reproduce el comp sin "INGRESO COMO" | PASS |
+| 3 | Campos vacíos al cargar `/login` | PASS |
+| 4 | Login de Caro → `/`, sesión persiste tras recargar | PASS |
+| 5 | Login de Lucía → `/` | PASS |
+| 6 | Credenciales incorrectas → error inline sin redirect | PASS |
+| 7 | `/activate` reproduce el comp (Diego · Mateo · Sala Soles) | PASS |
+| 8 | Activación Diego → sesión + redirect `/` | PASS |
+| 9 | Errores inline: código, email, contraseña, checkbox | PASS |
+| 10 | Re-login de Diego tras activar funciona | PASS |
+| 11 | Logout de sidebar y drawer mobile → `/login` | PASS |
+| 12 | "¿Olvidaste tu contraseña?" decorativo | PASS |
+| 13 | Diego sigue PENDIENTE en perfil tras activar | PASS |
+| 14 | Mobile <768px: panel izquierdo oculto, formulario centrado | PASS |
+| 15 | Sin links a rutas inexistentes | PASS |
+| 16 | Capturas guardadas en `.playwright-mcp/` | PASS |
+
+### Evidencia
+
+- `.playwright-mcp/verify-03-login-desktop.png` — Login desktop 1280×800.
+- `.playwright-mcp/verify-03-login-mobile.png` — Login mobile 375×667.
+- `.playwright-mcp/verify-03-login-error.png` — Estado de error en login.
+- `.playwright-mcp/verify-03-activate-desktop.png` — Activación desktop 1280×800.
+- `.playwright-mcp/verify-03-activate-mobile.png` — Activación mobile 375×667.
+- `.playwright-mcp/verify-03-activate-error.png` — Estado de error en activación.
+
+### Notas
+
+No se requirieron arreglos en el código. La implementación coincide con el spec y con los comps de referencia. Los flujos de login (Caro, Lucía, Diego re-login), activación, logout y persistencia de sesión fueron verificados con Playwright MCP. El mock de Diego permanece como PENDIENTE en `/kids/mateo-fernandez` tras la activación, confirmando que el mock no muta.
