@@ -2,7 +2,7 @@
 
 import type { AvatarColor } from "@/lib/mock-data";
 
-type AvatarSize = 40 | 48 | 84;
+type AvatarSize = 40 | 44 | 48 | 84;
 type AvatarVariant = "kid" | "parent";
 
 type AvatarProps = {
@@ -24,6 +24,7 @@ const AVATAR_PALETTE: Record<AvatarColor, { bg: string; fg: string }> = {
 
 const SIZE_CLASSES: Record<AvatarSize, string> = {
   40: "h-10 w-10 text-[16px]",
+  44: "h-11 w-11 text-[19px]",
   48: "h-12 w-12 text-[19px]",
   84: "h-[84px] w-[84px] text-[34px]",
 };
