@@ -30,7 +30,7 @@ export default function KidsScreen({ mockKids }: { mockKids: Child[] }) {
   };
 
   return (
-    <>
+    <div className="mx-auto max-w-[880px] px-6 py-8 md:px-10 md:py-[34px]">
       {/* Header con botón funcional */}
       <div className="mb-[22px] flex items-end justify-between gap-4">
         <div>
@@ -68,6 +68,6 @@ export default function KidsScreen({ mockKids }: { mockKids: Child[] }) {
         onClose={() => setIsModalOpen(false)}
         onSuccess={(input) => handleAddKid(input)}
       />
-    </>
+    </div>
   );
 }
