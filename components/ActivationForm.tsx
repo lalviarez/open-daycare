@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Avatar } from "@/components/Avatar";
 import { activateAccount, homePathFor } from "@/lib/auth";
 import { children, invitations, room } from "@/lib/mock-data";
+import { getLocalInvitations } from "@/lib/invitations-storage";
 
 type FieldErrors = {
   code?: string;
@@ -24,9 +25,15 @@ export function ActivationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const invitation = useMemo(() => {
-    return invitations.find(
-      (item) => item.code.toUpperCase() === code.trim().toUpperCase()
+    const normalizedCode = code.trim().toUpperCase();
+    const mock = invitations.find(
+      (item) => item.code.toUpperCase() === normalizedCode
     );
+    if (mock) return mock;
+    const local = getLocalInvitations().find(
+      (item) => item.code.toUpperCase() === normalizedCode
+    );
+    return local ?? null;
   }, [code]);
 
   const child = useMemo(() => {

@@ -120,7 +120,7 @@ export function ParentsPanel({ child }: ParentsPanelProps) {
           <button
             type="button"
             onClick={handleOpenModal}
-            className="flex items-center gap-[12px] pt-2 text-left"
+            className="flex cursor-pointer items-center gap-[12px] pt-2 text-left"
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-dashed border-border text-muted">
               <PlusIcon />

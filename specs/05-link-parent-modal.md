@@ -78,21 +78,21 @@ Comportamiento de la modal:
 
 ## Criterios de aceptación
 
-- [ ] `npm run build` y `npm run lint` pasan sin errores.
-- [ ] El link «Vincular otro padre» de `/kids/[slug]` abre la modal con la estructura del comp: header «Vincular padre / a {nombre}» con X, banner azul con la copy exacta, NOMBRE DEL PADRE/MADRE, EMAIL, PARENTESCO (Mamá / Papá / Tutor/a), recuadro CÓDIGO DE INVITACIÓN con «Vence en 7 días» y botón «Enviar invitación».
-- [ ] El recuadro muestra un código de 5 caracteres distinto en cada apertura (y distinto de `7K4P9`).
-- [ ] Ningún parentesco seleccionado al abrir; los 3 botones alternan la selección (una sola activa, estilo del comp).
-- [ ] Enviar con nombre o email vacíos, email mal formado o parentesco sin elegir muestra el error inline correspondiente bajo el campo, sin cerrar la modal ni crear nada.
-- [ ] Enviar con un email ya vinculado a ese niño (padres del mock o invitaciones locales) muestra error inline y no crea la invitación.
-- [ ] Enviar válido cierra la modal y el padre aparece en PADRES VINCULADOS como PENDIENTE (chip + "invitación enviada") con avatar de la paleta.
-- [ ] Recargar el perfil preserva al padre vinculado (`odc-invitations:v1`); sin invitaciones locales el perfil es idéntico al verificado en SPEC 02.
-- [ ] `/activate` con el código generado + email de la invitación + contraseña ≥ 8 caracteres crea la sesión del padre nuevo; el flujo de Diego (`7K4P9`) sigue funcionando.
-- [ ] Tras activar, el padre nuevo sigue PENDIENTE en el perfil (nada muta a ACTIVA).
-- [ ] X, Esc y click en el overlay cierran la modal sin crear la invitación (el código se descarta).
-- [ ] El mismo email en otro niño se permite (invitaciones independientes).
-- [ ] En <768px la modal es usable sin scroll horizontal y el perfil se comporta como en SPEC 02.
-- [ ] La copy visible de la modal es la del comp, en español voseo; el código en inglés (regla del repo).
-- [ ] Capturas guardadas en `.playwright-mcp/`.
+- [x] `npm run build` y `npm run lint` pasan sin errores.
+- [x] El link «Vincular otro padre» de `/kids/[slug]` abre la modal con la estructura del comp: header «Vincular padre / a {nombre}» con X, banner azul con la copy exacta, NOMBRE DEL PADRE/MADRE, EMAIL, PARENTESCO (Mamá / Papá / Tutor/a), recuadro CÓDIGO DE INVITACIÓN con «Vence en 7 días» y botón «Enviar invitación».
+- [x] El recuadro muestra un código de 5 caracteres distinto en cada apertura (y distinto de `7K4P9`).
+- [x] Ningún parentesco seleccionado al abrir; los 3 botones alternan la selección (una sola activa, estilo del comp).
+- [x] Enviar con nombre o email vacíos, email mal formado o parentesco sin elegir muestra el error inline correspondiente bajo el campo, sin cerrar la modal ni crear nada.
+- [x] Enviar con un email ya vinculado a ese niño (padres del mock o invitaciones locales) muestra error inline y no crea la invitación.
+- [x] Enviar válido cierra la modal y el padre aparece en PADRES VINCULADOS como PENDIENTE (chip + "invitación enviada") con avatar de la paleta.
+- [x] Recargar el perfil preserva al padre vinculado (`odc-invitations:v1`); sin invitaciones locales el perfil es idéntico al verificado en SPEC 02.
+- [x] `/activate` con el código generado + email de la invitación + contraseña ≥ 8 caracteres crea la sesión del padre nuevo; el flujo de Diego (`7K4P9`) sigue funcionando.
+- [x] Tras activar, el padre nuevo sigue PENDIENTE en el perfil (nada muta a ACTIVA).
+- [x] X, Esc y click en el overlay cierran la modal sin crear la invitación (el código se descarta).
+- [x] El mismo email en otro niño se permite (invitaciones independientes).
+- [x] En <768px la modal es usable sin scroll horizontal y el perfil se comporta como en SPEC 02.
+- [x] La copy visible de la modal es la del comp, en español voseo; el código en inglés (regla del repo).
+- [x] Capturas guardadas en `.playwright-mcp/`.
 
 ## Decisiones
 

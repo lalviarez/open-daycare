@@ -1,7 +1,8 @@
 "use client";
 
 import { children, invitations, users, type UserRole } from "@/lib/mock-data";
-import { getLocalInvitations } from "@/lib/invitations-storage";
+
+const INVITATIONS_KEY = "odc-invitations:v1";
 
 const SESSION_KEY = "odc-session:v1";
 const ACCOUNTS_KEY = "odc-accounts:v1";
@@ -137,11 +138,18 @@ export function activateAccount(
     (item) => item.code.toUpperCase() === normalizedCode
   );
 
-  const localInvitation = mockInvitation
-    ? null
-    : getLocalInvitations().find(
-        (item) => item.code.toUpperCase() === normalizedCode
-      );
+  let localInvitation: { code: string; email: string; childId: string; parentName: string; parentRole: string } | null = null;
+  if (!mockInvitation) {
+    const raw = safeGetItem(INVITATIONS_KEY);
+    if (raw) {
+      try {
+        const locals = JSON.parse(raw) as Array<{ code: string; email: string; childId: string; parentName: string; parentRole: string }>;
+        localInvitation = locals.find((item) => item.code.toUpperCase() === normalizedCode) ?? null;
+      } catch {
+        // corrupt data, ignore
+      }
+    }
+  }
 
   const invitation = mockInvitation ?? localInvitation;
   if (!invitation) {
