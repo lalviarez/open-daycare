@@ -2,6 +2,8 @@
 
 import { children, invitations, users, type UserRole } from "@/lib/mock-data";
 
+const INVITATIONS_KEY = "odc-invitations:v1";
+
 const SESSION_KEY = "odc-session:v1";
 const ACCOUNTS_KEY = "odc-accounts:v1";
 
@@ -130,9 +132,26 @@ export function activateAccount(
 ):
   | { ok: true; session: Session }
   | { ok: false; error: "code" | "email" | "password" } {
-  const invitation = invitations.find(
-    (item) => item.code.toUpperCase() === code.trim().toUpperCase()
+  const normalizedCode = code.trim().toUpperCase();
+
+  const mockInvitation = invitations.find(
+    (item) => item.code.toUpperCase() === normalizedCode
   );
+
+  let localInvitation: { code: string; email: string; childId: string; parentName: string; parentRole: string } | null = null;
+  if (!mockInvitation) {
+    const raw = safeGetItem(INVITATIONS_KEY);
+    if (raw) {
+      try {
+        const locals = JSON.parse(raw) as Array<{ code: string; email: string; childId: string; parentName: string; parentRole: string }>;
+        localInvitation = locals.find((item) => item.code.toUpperCase() === normalizedCode) ?? null;
+      } catch {
+        // corrupt data, ignore
+      }
+    }
+  }
+
+  const invitation = mockInvitation ?? localInvitation;
   if (!invitation) {
     return { ok: false, error: "code" };
   }

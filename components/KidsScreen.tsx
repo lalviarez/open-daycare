@@ -43,7 +43,7 @@ export default function KidsScreen({ mockKids }: { mockKids: Child[] }) {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 rounded-[14px] bg-gradient-to-b from-coral to-coral-dark px-[18px] py-[11px] text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.7)]"
+          className="flex cursor-pointer items-center gap-2 rounded-[14px] bg-gradient-to-b from-coral to-coral-dark px-[18px] py-[11px] text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.7)]"
         >
           <svg
             width="17"
